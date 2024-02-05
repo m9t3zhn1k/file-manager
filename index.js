@@ -13,3 +13,9 @@ const rl = createInterface({
 })
 
 rl.on('close', () => MessagesController.goodbye(username))
+
+rl.on('line', (input) => {
+  if (input === '.exit') {
+    rl.close()
+  }
+})
