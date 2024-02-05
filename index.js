@@ -1,21 +1,24 @@
 import { createInterface } from 'readline'
-import { parseUsername, MessagesController, Directory } from './src/utils/index.js'
+import { getUsername, Messages } from './src/utils/index.js'
+import { homedir } from 'os'
+import { CommandHandler } from './src/command-handler/index.js'
 
-const username = parseUsername()
-const directory = new Directory()
+const username = getUsername()
+const path = homedir()
 
-MessagesController.greeting(username)
-MessagesController.currentDirectory(directory.path)
+Messages.greeting(username)
+Messages.currentDirectory(path)
 
 const rl = createInterface({
   input: process.stdin,
   output: process.stdout,
 })
 
-rl.on('close', () => MessagesController.goodbye(username))
+rl.on('close', () => Messages.goodbye(username))
 
 rl.on('line', (input) => {
   if (input === '.exit') {
     rl.close()
   }
+  CommandHandler.handle(input)
 })
