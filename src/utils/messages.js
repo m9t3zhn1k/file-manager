@@ -1,4 +1,4 @@
-export class Messages {
+export class MessagesController {
   static greeting(username) {
     console.log(`Welcome to the File Manager, ${username}!`)
   }
