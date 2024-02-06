@@ -1,5 +1,5 @@
 import { createInterface } from 'readline'
-import { getUsername, Messages } from './src/utils/index.js'
+import { getUsername, Messages } from '#utils'
 import { homedir } from 'os'
 import { CommandHandler } from './src/command-handler/index.js'
 
