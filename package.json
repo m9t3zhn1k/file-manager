@@ -14,9 +14,11 @@
     "prettier-plugin-organize-imports": "^3.2.4"
   },
   "imports": {
+    "#index": "./index.js",
     "#utils": "./src/utils/index.js",
     "#command-handler": "./src/command-handler/index.js",
     "#state": "./src/state/index.js",
-    "#commands": "./src/commands/index.js"
+    "#commands": "./src/commands/index.js",
+    "#validators": "./src/validators/index.js"
   }
 }

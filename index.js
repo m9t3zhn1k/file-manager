@@ -18,6 +18,7 @@ rl.on('close', () => Messages.goodbye(state.username))
 rl.on('line', input => {
   if (input === '.exit') {
     rl.close()
+    return
   }
   CommandHandler.handle(input)
 })

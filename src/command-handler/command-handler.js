@@ -1,15 +1,19 @@
+import { up } from '#commands'
 import { Messages } from '#utils'
+import { noArgumentValidator } from '#validators'
 
 export class CommandHandler {
-  static handle(command, ...args) {
+  static async handle(command, ...args) {
     switch (command) {
       case 'up': {
-        if (args.length) {
-          Messages.invalidInput()
+        if (noArgumentValidator(args)) {
           return
         }
-        console.log('up')
+        await up()
+        break
       }
+      default:
+        Messages.operationFailed()
     }
   }
 }
