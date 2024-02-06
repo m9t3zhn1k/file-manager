@@ -20,5 +20,6 @@ rl.on('line', input => {
     rl.close()
     return
   }
-  CommandHandler.handle(input)
+  const [command, ...args] = input.trim().split(' ')
+  CommandHandler.handle(command, args)
 })
