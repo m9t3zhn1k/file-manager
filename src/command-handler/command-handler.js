@@ -1,6 +1,6 @@
-import { add, cat, cd, ls, up } from '#commands'
+import { add, cat, cd, ls, rn, up } from '#commands'
 import { Messages } from '#utils'
-import { noArgumentValidator, onlyArgumentValidator } from '#validators'
+import { noArgumentValidator, onlyArgumentValidator, twoArgumentsValidator } from '#validators'
 
 export class CommandHandler {
   static async handle(command, args) {
@@ -46,6 +46,15 @@ export class CommandHandler {
         }
         const arg = args[0]
         await add(arg)
+        break
+      }
+      case 'rn': {
+        if (twoArgumentsValidator(args)) {
+          Messages.invalidInput()
+          return
+        }
+        const [file, newName] = args
+        await rn(file, newName)
         break
       }
       default:
