@@ -11,7 +11,7 @@ export async function mv(file, directory) {
     await copy(file, directory)
     await unlink(source)
     Messages.currentDirectory(state.directory)
-  } catch (err) {
+  } catch {
     Messages.operationFailed()
   }
 }

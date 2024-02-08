@@ -1,4 +1,4 @@
-import { add, cat, cd, cp, hash, ls, mv, os, rm, rn, up } from '#commands'
+import { add, cat, cd, compress, cp, decompress, hash, ls, mv, os, rm, rn, up } from '#commands'
 import { Messages } from '#utils'
 import { noArgumentValidator, onlyArgumentValidator, twoArgumentsValidator } from '#validators'
 
@@ -100,6 +100,24 @@ export class CommandHandler {
         }
         const [path] = args
         await hash(path)
+        break
+      }
+      case 'compress': {
+        if (twoArgumentsValidator(args)) {
+          Messages.invalidInput()
+          return
+        }
+        const [source, destination] = args
+        await compress(source, destination)
+        break
+      }
+      case 'decompress': {
+        if (twoArgumentsValidator(args)) {
+          Messages.invalidInput()
+          return
+        }
+        const [source, destination] = args
+        await decompress(source, destination)
         break
       }
       default:
