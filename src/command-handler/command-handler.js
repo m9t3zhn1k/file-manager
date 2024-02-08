@@ -1,4 +1,4 @@
-import { add, cat, cd, cp, ls, rn, up } from '#commands'
+import { add, cat, cd, cp, ls, mv, rn, up } from '#commands'
 import { Messages } from '#utils'
 import { noArgumentValidator, onlyArgumentValidator, twoArgumentsValidator } from '#validators'
 
@@ -64,6 +64,15 @@ export class CommandHandler {
         }
         const [file, newName] = args
         await cp(file, newName)
+        break
+      }
+      case 'mv': {
+        if (twoArgumentsValidator(args)) {
+          Messages.invalidInput()
+          return
+        }
+        const [file, newName] = args
+        await mv(file, newName)
         break
       }
       default:
