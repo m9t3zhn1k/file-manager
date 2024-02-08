@@ -1,4 +1,4 @@
-import { cat, cd, ls, up } from '#commands'
+import { add, cat, cd, ls, up } from '#commands'
 import { Messages } from '#utils'
 import { noArgumentValidator, onlyArgumentValidator } from '#validators'
 
@@ -37,6 +37,15 @@ export class CommandHandler {
         }
         const arg = args[0]
         await cat(arg)
+        break
+      }
+      case 'add': {
+        if (onlyArgumentValidator(args)) {
+          Messages.invalidInput()
+          return
+        }
+        const arg = args[0]
+        await add(arg)
         break
       }
       default:
