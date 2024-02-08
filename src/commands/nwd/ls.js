@@ -20,7 +20,7 @@ export async function ls() {
 
     console.table([...directories, ...files], ['name', 'type'])
     Messages.currentDirectory(state.directory)
-  } catch (error) {
+  } catch {
     Messages.operationFailed()
   }
 }
